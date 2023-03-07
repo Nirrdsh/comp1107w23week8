@@ -46,43 +46,75 @@ int main(int argc, char *argv[])
 
     int selection = get_int("What is your selection?\n");
 
-    //TODO:: Write a 10 case switch statement to run the appropriate function.
+    //TODO:: Write a 11 case switch statement to run the appropriate function.
+    switch (selection)
+    {
+    case 0:
+        modulo_testing();
+        break;
+        case 1:
+        integer_division_testing();
+        break;
+        case 2:
+        float_cast_to_integer_division_testing();
+        break;
+        case 3:
+        for_loop_testing();
+        case 4:
+        integer_float_addition();
+        break;
+        case 5:
+        print_ascii_string_value();
+        break;
+        case 6:
+        print_provinces();
+        break;
+        
 
+
+
+
+
+    
+    default:
+        break;
+    }
     return 0;
 }
 
 int modulo_testing()
 {
 
-    //TODO:: Get 2 ints and run the modulo calculation
-    //TODO:: Print out the result using the commented out printf
+    int x = get_int("Enter the numerator : ");
+    int y = get_int("Enter the denominator : ");
+    int modulo = 0;
+    modulo = x % y;
 
-    //printf("The remainder of %d divided by %d is %d", x, y, modulo);
+    printf("The remainder of %d divided by %d is %d", x, y, modulo);
     return 1;
 }
 
 int integer_division_testing()
 {
+    int x = get_int("Enter the numerator : ");
+    int y = get_int("Enter the denominator : ");
+    int result = x / y;
 
-    //TODO:: Get 2 ints and run the division calculation
-    //TODO:: Print out the result using the commented out printf
 
-    //printf("The result of %d divided by %d is %d", x, y, result);
 
-    return result;
+    printf("The result of %d divided by %d is %d", x, y, result);
+
+    return 0;
 }
 
 int float_cast_to_integer_division_testing()
 {
-
-    //TODO:: Get 2 FLOATS and run the division calculation
-    //TODO:: Print out the result using the commented out printf
-    //You must use an explicit cast ie: (int)
-
-
-    //printf("The result of %d divided by %d is %f, once cast to an int the result is %d\n", x, y, result, int_result);
-
-    return 1;
+    float x = get_float("Enter the numerator : ");
+    float y = get_float("enter the denominator : ");
+    float result = x / y;
+    int int_result = (int)result;
+    printf("The result of %f divided by %f is %f, once cast to an int the result is %d\n", x, y, result, int_result);
+    return ;
 }
 
 float for_loop_testing()
@@ -94,28 +126,74 @@ float for_loop_testing()
     float increment = get_float("How much should the counter increment by?\n");
 
     bool is_positive = get_char("Should the counter decrement instead of incrementing? y / n \n") == 'n' ? true : false;
+    
+    /*for (int iterator = 0; iterator < loop_count; iterator++)
+    {
+        if (is_positive)
+        {
+            counter = counter + increment
+        } 
+        else
+        {
+            counter = counter - increment
+        
+        if(!is_positive)
+        {
+            increment = increment *-1
+        }
+        
+        
+    }*/
+     if(!is_positive)
+        {
+            increment = increment * -1;
+        }
 
-   //TODO:: Write a for loop that increments a counter the appropriate amount of times by a custom amount
-   //TODO:: Write an if check that will optionally decrement instead of incrementing.
+        for (int iterator = 0; iterator < loop_count; iterator++)
+        {
+            counter= counter + increment;
+        }
+        
+    
+    printf("The final value of the counter is %f\n", counter);
 
-    //printf("The final value of the counter is %f\n", counter);
+    //TODO:: Write a for loop that increments a counter the appropriate amount of times by a custom amount
+    //TODO:: Write an if check that will optionally decrement instead of incrementing.
+
+    
 
     return counter;
 }
 
 float integer_float_addition()
 {
+    int x = get_int("Enter the integer : ");
+    float y = get_float("Enter the float : ");
+    float result = x + y;
+
+
     //Get an int and a float and add them together, make sure the result comes out as a float
 
-    //printf("The result of %d plus %f is %f", x, y, result);
+    printf("The result of %d plus %f is %f", x, y, result);
 
     return 1.0;
 }
 
 string print_ascii_string_value()
 {
+    string str = get_string(" Enter your desired word : ");
+    int strsize = strlen(str);
+    int i = 0;
+    int result = 0;
+    while (i < strsize)
+    {
+        printf("the char at position %d is %C and the ascii value is %d\n", i, str[i], str[i]);
+        i++;
+     
+    }
+    
     //TODO:: Write a while loop that takes a string that you query the user for then print out each letter with their matching ascii value
-    //TODO:: Also print out the characters position in the string  
+    //TODO:: Also print out the characters position in the string
 }
 
 void change_machine()
@@ -130,7 +208,6 @@ void change_machine()
     //      returns 3 quarters and 2 dimes.
 
     //Optional TODO::The government makes businesses round up the nickels for numbers ending in 3 and 8.
-    
 }
 
 string rock_paper_scissors()
@@ -142,8 +219,7 @@ string rock_paper_scissors()
     // Use this to determine the "AI" choice
     int random = rand() % 30;
 
-   //TODO:: Write the game logic with if checks and determine who won
-
+    //TODO:: Write the game logic with if checks and determine who won
 }
 
 //Convenience function you can call
@@ -178,7 +254,7 @@ void vigenere_cipher()
 //Convenice function you can call
 char vigenere_offset_letter(char msgLtr, char keyLtr)
 {
-    //Determine if you need to offset by 97 or 65 to make the choice between 0 for 'a' and 25 for 'z' 
+    //Determine if you need to offset by 97 or 65 to make the choice between 0 for 'a' and 25 for 'z'
     int capital_offset = islower(msgLtr) ? 97 : 65;
 
     //The key offset doesn't matter because you only offset by the characters value, doesn't matter if its capital
