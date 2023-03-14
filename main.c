@@ -69,6 +69,14 @@ int main(int argc, char *argv[])
         case 6:
         print_provinces();
         break;
+        case 8:
+        rock_paper_scissors();
+        break;
+        case 10:
+        vigenere_cipher();
+        break;
+        
+
         
 
 
@@ -127,23 +135,6 @@ float for_loop_testing()
 
     bool is_positive = get_char("Should the counter decrement instead of incrementing? y / n \n") == 'n' ? true : false;
     
-    /*for (int iterator = 0; iterator < loop_count; iterator++)
-    {
-        if (is_positive)
-        {
-            counter = counter + increment
-        } 
-        else
-        {
-            counter = counter - increment
-        
-        if(!is_positive)
-        {
-            increment = increment *-1
-        }
-        
-        
-    }*/
      if(!is_positive)
         {
             increment = increment * -1;
@@ -204,6 +195,8 @@ void change_machine()
                         0,
                         0};
 
+    
+
     //TODO: Get a float from the user and return the change needed for that amount IE: 2.95
     //      returns 3 quarters and 2 dimes.
 
@@ -211,13 +204,43 @@ void change_machine()
 }
 
 string rock_paper_scissors()
-{
+{    //ask the user to choose either 1,2 or 3 and assign it as rock paper and scissor
+    int number_choice;
+    int ai_number_choice
+    do
+    {
+        number_choice = get_int("make a choice :\n 1.Rock\n 2.Paper\n 3.Scissor\n");
+
+    } while (number_choice > 0 && number_choice < 4);
+    int random = rand() % 30;
+    random = (random + 10) / 10 ;
+    
+
+    /*while (choice < 1 || choice > 3) 
+    {
+        printf("Enter your choice for rock, paper or scissors(1,2,3): ");
+        scanf("%d", &choice);
+    }
+    int random = rand() % 30;
+    printf("Random number generated: %d\n", random);
+     printf("You chose ");
+    if (choice == 1 && random == 1) {
+        printf("rock.\n");
+    } else if (choice == 2 && random == 2) {
+        printf("paper.\n");
+    } else {
+        printf("scissors.\n");
+    }*/
+
+
+
+
     //TODO:: Query the user for an int between 1 and 3 for their choice of rock, paper scissors.
     //      Use a do while loop to guarantee their input is valid
 
     // Generates a pseudo random int between 0 and 29
     // Use this to determine the "AI" choice
-    int random = rand() % 30;
+    
 
     //TODO:: Write the game logic with if checks and determine who won
 }
@@ -247,6 +270,17 @@ void vigenere_cipher()
     string message = get_string("What is the message to encode? ");
 
     string key = get_string("What is your encoding key? ");
+    int length = strlen(message);
+    char vigenere[length + 1];
+    for (int i = 0; i < length; i++) 
+    {
+    int shift = key[i % length] - 'a';
+    char encrypted_char = ((message[i] - 'a' + shift) % 26) + 'a';
+    vigenere[i] = encrypted_char;
+    }
+    vigenere[length] = '\0';
+    printf("encrypted word : %s\n", vigenere);
+    return ;
 
     //TODO:: Write the for loop for the vigenere cipher
 }
